@@ -37,6 +37,7 @@ async def comand_help(message: types.Message):
 async def comand_help(message: types.Message, state=FSMAddWords.add_word):
 	async with state.proxy() as data:
 		if data.get('key_words', False):
+			await message.answer('Ожидание может занять от 4 до 15 секунд, пожалуйста подождите!')
 			jobs_info = get_info_job(data['key_words'])
 			if len(jobs_info) > 0:
 				for job_info in jobs_info:
